@@ -1,5 +1,6 @@
 #include "PPMImage.h"
 #include <fstream>
+
 PPMImage::PPMImage()
 {
 }
@@ -23,7 +24,7 @@ bool PPMImage::OutputPPMImage(const char* fileName,unsigned char* data, int widt
 			for (size_t j = 0; j < width; j++)
 			{
 				int index = i * width*3+j*3;
-				fst << data[index] << " " << data[index + 1] << " " << data[index + 2] <<" ";
+				fst << (int)data[index] << " " << (int)data[index + 1] << " " << (int)data[index + 2] <<" ";
 			}
 			fst << std::endl;
 		}
