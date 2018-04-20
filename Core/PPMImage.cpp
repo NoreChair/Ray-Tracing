@@ -9,7 +9,7 @@ PPMImage::~PPMImage()
 {
 }
 
-bool PPMImage::OutputPPMImage(const char* fileName,unsigned char* data, int width, int height, int maxColor)
+bool PPMImage::OutputPPMImageWithP3(const char* fileName,unsigned char* data, int width, int height, int maxColor)
 {
 
 	std::fstream fst;
@@ -32,5 +32,29 @@ bool PPMImage::OutputPPMImage(const char* fileName,unsigned char* data, int widt
 		return true;
 	}
 
+	return false;
+}
+
+bool PPMImage::OutputPPMImageWithP6(const char * fileName, unsigned char * data, int width, int height, int maxColor)
+{
+	FILE* file=nullptr;
+	fopen_s(&file,fileName, "w");
+	if (file!=nullptr)
+	{
+		fprintf(file, "P6 \n");
+		fprintf(file, "%d %d \n", width, height);
+		fprintf(file, "%d \n", maxColor);
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				int index = i * width * 3 + j * 3;
+				fprintf(file, "%c%c%c", data[index], data[index + 1], data[index + 2]);
+			}
+			fprintf(file, "\n");
+		}
+		fclose(file);
+		return true;	
+	}
 	return false;
 }

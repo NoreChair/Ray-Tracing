@@ -13,7 +13,8 @@ public:
 		@maxColor 0~255 颜色最大值
 		只输出RGB颜色值的图片
 	*/
-	bool OutputPPMImage(const char* fileName,unsigned char* data, int width, int height, int maxColor=255);
+	bool OutputPPMImageWithP3(const char* fileName,unsigned char* data, int width, int height, int maxColor=255);
 	
+	bool OutputPPMImageWithP6(const char* fileName, unsigned char* data, int width, int height, int maxColor = 255);
 };
 
