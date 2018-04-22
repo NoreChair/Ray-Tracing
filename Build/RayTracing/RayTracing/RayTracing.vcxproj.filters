@@ -21,9 +21,6 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Core\RayTracing.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Core\PPMImage.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -31,6 +28,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Core\Ray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Core\Sphere.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Core\Shape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Core\HitableList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +47,16 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Core\Raytracing.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Core\PPMImage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Core\Ray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Core\Sphere.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Core\HitableList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

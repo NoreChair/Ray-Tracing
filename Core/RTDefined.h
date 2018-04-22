@@ -9,5 +9,9 @@
 #endif // Delete_Array_Pointer
 
 #ifndef Cast_UnChar
-#define Cast_UnChar(x) static_cast<unsigned char>(x);
+#define Cast_UnChar(x) static_cast<unsigned char>(x)
 #endif 
+
+#ifndef Cast_Int
+#define Cast_Int(x) static_cast<int>(x)
+#endif // !Cast_Int

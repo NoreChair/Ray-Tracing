@@ -8,18 +8,17 @@ public:
 	Ray(glm::vec3 orgin, glm::vec3 direction);
 	~Ray();
 	
-	 void SetOrigin(glm::vec3 orgin);
-	 void SetOrigin(float x, float y, float z);
-	 void SetDirection(glm::vec3 direction);
-	 void SetDirection(float, float y, float z);
-
-	 glm::vec3 GetDirection();
-	 glm::vec3 GetOrigin();
-
 	 glm::vec3 GetPointAtParameter(float t);
 
-private:
+public:
 	glm::vec3 _origin;
 	glm::vec3 _direction;
 };
 
+struct Hitrecord
+{
+	bool  _ishit=false;
+	float _t = 0.0;
+	glm::vec3 _p;
+	glm::vec3 _n;
+};
