@@ -1,5 +1,5 @@
 #include "HitableList.h"
-#include "RTDefined.h"
+#include "RTDefined.hpp"
 HitableList::HitableList()
 {
 }

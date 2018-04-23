@@ -1,5 +1,5 @@
 #include "Sphere.h"
-#include "RTDefined.h"
+
 Sphere::Sphere()
 {
 	_shapeType = SHAPE_SPHERE;

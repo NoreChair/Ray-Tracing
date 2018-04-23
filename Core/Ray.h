@@ -15,10 +15,14 @@ public:
 	glm::vec3 _direction;
 };
 
+// 碰撞信息
 struct Hitrecord
 {
 	bool  _ishit=false;
+	
 	float _t = 0.0;
+	// 碰撞点
 	glm::vec3 _p;
+	// 碰撞点法线
 	glm::vec3 _n;
 };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include"Shape.h"
+#include "RTDefined.hpp"
 class Sphere:public Shape
 {
 public:

@@ -148,10 +148,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Core\Camera.hpp" />
     <ClInclude Include="..\..\..\Core\HitableList.h" />
     <ClInclude Include="..\..\..\Core\PPMImage.h" />
     <ClInclude Include="..\..\..\Core\Ray.h" />
-    <ClInclude Include="..\..\..\Core\RTDefined.h" />
+    <ClInclude Include="..\..\..\Core\RTDefined.hpp" />
     <ClInclude Include="..\..\..\Core\Shape.h" />
     <ClInclude Include="..\..\..\Core\Sphere.h" />
     <ClInclude Include="stdafx.h" />

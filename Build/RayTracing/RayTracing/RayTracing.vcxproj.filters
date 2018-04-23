@@ -24,9 +24,6 @@
     <ClInclude Include="..\..\..\Core\PPMImage.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Core\RTDefined.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Core\Ray.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -37,6 +34,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Core\HitableList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Core\Camera.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Core\RTDefined.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
