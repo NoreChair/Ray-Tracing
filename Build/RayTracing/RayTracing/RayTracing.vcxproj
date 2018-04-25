@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Core\Camera.hpp" />
     <ClInclude Include="..\..\..\Core\HitableList.h" />
+    <ClInclude Include="..\..\..\Core\Material.hpp" />
     <ClInclude Include="..\..\..\Core\PPMImage.h" />
     <ClInclude Include="..\..\..\Core\Ray.h" />
     <ClInclude Include="..\..\..\Core\RTDefined.hpp" />

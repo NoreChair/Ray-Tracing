@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <glm\glm.hpp>
 #include <glm\ext.hpp>
 class Ray
@@ -15,14 +15,14 @@ public:
 	glm::vec3 _direction;
 };
 
-// Åö×²ĞÅÏ¢
+// ç¢°æ’ä¿¡æ¯
 struct Hitrecord
 {
 	bool  _ishit=false;
 	
 	float _t = 0.0;
-	// Åö×²µã
+	// ç¢°æ’ç‚¹
 	glm::vec3 _p;
-	// Åö×²µã·¨Ïß
+	// ç¢°æ’ç‚¹æ³•çº¿
 	glm::vec3 _n;
 };
