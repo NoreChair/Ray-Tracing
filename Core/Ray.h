@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <glm\glm.hpp>
 #include <glm\ext.hpp>
+class Shape;
 class Ray
 {
 public:
@@ -25,4 +26,6 @@ struct Hitrecord
 	glm::vec3 _p;
 	// 碰撞点法线
 	glm::vec3 _n;
+	// 碰撞到的shape
+	Shape* _shape;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "Ray.h"
+#include "RTDefined.hpp"
 class Material
 {
 public:
@@ -19,10 +20,13 @@ class Metal:public Material
 public:
 	Metal() {}
 	Metal(glm::vec3 albedo) { SetAlbedo(albedo); }
-	~Metal() {}
+	virtual ~Metal() {}
 
 	virtual bool Scatter(Ray& ray_in, Hitrecord& hitrec, glm::vec3& color, Ray& ray_scatter) {
-	
+		glm::vec3 target = glm::reflect(ray_in._direction, hitrec._n);
+		ray_scatter._origin = hitrec._p; ray_scatter._direction = target;
+		color = _albedo;
+		return (glm::dot(ray_scatter._direction, hitrec._n)>0);
 	}
 
 };
@@ -32,10 +36,13 @@ class Diffuse:public Material
 public:
 	Diffuse() {}
 	Diffuse(glm::vec3 albedo) { SetAlbedo(albedo); }
-	~Diffuse() {}
+	virtual ~Diffuse() {}
 
 	virtual bool Scatter(Ray& ray_in, Hitrecord& hitrec, glm::vec3& color, Ray& ray_scatter) {
-
+		glm::vec3 target = hitrec._p + hitrec._n + Random_vec_in_sphere();
+		ray_scatter._origin = hitrec._p; ray_scatter._direction = target;
+		color = _albedo;
+		return true;
 	}
 };
 

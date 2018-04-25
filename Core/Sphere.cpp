@@ -34,6 +34,7 @@ void Sphere::IsHitRay(Ray& ray, Hitrecord& hit, float tmin, float tmax)
 			hit._ishit = true;
 			hit._p = ray.GetPointAtParameter(temp);
 			hit._n = (hit._p - _center) / _radius;
+			hit._shape = this;
 			return;
 		}
 		temp = (-b + sqr) / a;
@@ -43,9 +44,10 @@ void Sphere::IsHitRay(Ray& ray, Hitrecord& hit, float tmin, float tmax)
 			hit._ishit = true;
 			hit._p = ray.GetPointAtParameter(temp);
 			hit._n = (hit._p - _center) / _radius;
+			hit._shape = this;
 			return;
 		}
 	}
 	hit._ishit = false;
-
+	hit._shape = nullptr;
 }
