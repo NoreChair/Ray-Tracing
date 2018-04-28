@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Ray.h"
 class Camera
 {
@@ -10,13 +10,13 @@ public:
 	Ray Get_ray(float u, float v) { return Ray(_origin, _bottom_left_corner + u * _horizontal + v * _vertical); }
 
 
-	/// ÆÁÄ»×óÏÂ×ø±êµã
+	/// å±å¹•å·¦ä¸‹åæ ‡ç‚¹
 	glm::vec3 _bottom_left_corner = glm::vec3(-2.0, -1.0, -1.0);
-	/// ÆÁÄ»ºáÖá³¤¶È
+	/// å±å¹•æ¨ªè½´é•¿åº¦
 	glm::vec3 _horizontal = glm::vec3(4.0, 0.0, 0.0);
-	/// ÆÁÄ»×İÖá³¤¶È
+	/// å±å¹•çºµè½´é•¿åº¦
 	glm::vec3 _vertical = glm::vec3(0.0, 2.0, 0.0);
-	/// ÉãÏñ»ú
+	/// æ‘„åƒæœº
 	glm::vec3 _origin = glm::vec3(0.0, 0.0, 0.0);
 
 };

@@ -24,11 +24,12 @@ public:
 
 	virtual bool Scatter(Ray& ray_in, Hitrecord& hitrec, glm::vec3& color, Ray& ray_scatter) {
 		glm::vec3 target = glm::reflect(ray_in._direction, hitrec._n);
-		ray_scatter._origin = hitrec._p; ray_scatter._direction = target;
+		ray_scatter._origin = hitrec._p; ray_scatter._direction = target+ _roughness*Random_vec_in_sphere();
 		color = _albedo;
 		return (glm::dot(ray_scatter._direction, hitrec._n)>0);
 	}
 
+	float _roughness = 0.7;
 };
 
 class Diffuse:public Material
