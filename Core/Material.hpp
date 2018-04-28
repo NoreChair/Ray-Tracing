@@ -10,7 +10,7 @@ public:
 	virtual bool Scatter(Ray& ray_in, Hitrecord& hitrec, glm::vec3& color, Ray& ray_scatter) = 0;
 
 	glm::vec3 GetAlbedo() { return _albedo; }
-	glm::vec3 SetAlbedo(glm::vec3 albedo) { _albedo = albedo; }
+	void SetAlbedo(glm::vec3 albedo) { _albedo = albedo; }
 protected:
 	glm::vec3 _albedo =glm::vec3(1.0);
 };
