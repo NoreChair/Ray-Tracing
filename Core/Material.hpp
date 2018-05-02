@@ -1,6 +1,7 @@
 #pragma once
 #include "Ray.h"
 #include "RTDefined.hpp"
+#include <stdio.h>
 class Material
 {
 public:
@@ -58,33 +59,34 @@ public:
 	virtual ~Dielectric() {}
 
 	virtual bool Scatter(Ray& ray_in, Hitrecord& hitrec, glm::vec3& color, Ray& ray_scatter) {
-		glm::vec3 unor =hitrec._n;
-		float eta= _eta;
-		float cosine = glm::dot(ray_in._direction, unor);
-
-		if (glm::dot(ray_in._direction,hitrec._n)>0)
-		{
-			unor = -hitrec._n;
-			eta = 1.0f/_eta;
-			cosine = glm::dot(ray_in._direction, unor)*_eta;
-		}
-
-		glm::vec3 refr;
-		float refprob=1.0;
-		if (refract(ray_in._direction, unor, refr, eta)) {
-			refprob = schilck(cosine, _eta);
-		}
-		if (drand48() < refprob)
-		{
-			ray_scatter._origin = hitrec._p;
-			ray_scatter._direction = glm::reflect(ray_in._direction, hitrec._n);
+		using namespace glm;
+		vec3 outward_normal;
+		vec3 reflected = reflect(ray_in._direction, hitrec._n);
+		float ni_over_nt;
+		color = _albedo;
+		vec3 refracted;
+		float reflect_prob;
+		float cosine;
+		if (dot(ray_in._direction, hitrec._n) > 0) {
+			outward_normal = -hitrec._n;
+			ni_over_nt = 1.0 / _eta;
+			//         cosine = _eta * dot(ray_in._direction,  hitrec._n) / ray_in._direction.length();
+			cosine = dot(ray_in._direction,  hitrec._n) / ray_in._direction.length();
+			cosine = sqrt(1 - _eta * _eta*(1 - cosine * cosine));
 		}
 		else {
-			ray_scatter._origin = hitrec._p;
-			ray_scatter._direction = refr;
+			outward_normal =  hitrec._n;
+			ni_over_nt = _eta;
+			cosine = -dot(ray_in._direction,  hitrec._n) / ray_in._direction.length();
 		}
-
-		color = _albedo;
+		if (refract(ray_in._direction, outward_normal, refracted, ni_over_nt))
+			reflect_prob = schlick(cosine, _eta);
+		else
+			reflect_prob = 1.0;
+		if (drand48() < reflect_prob)
+			ray_scatter = Ray(hitrec._p, reflected);
+		else
+			ray_scatter = Ray(hitrec._p, refracted);
 		return true;
 	}
 
@@ -92,11 +94,12 @@ public:
 
 protected:
 	bool refract(glm::vec3& v, glm::vec3& n, glm::vec3& refracted,float eta) {
-		float dt = glm::dot(v, n);
+		glm::vec3 nv =glm::normalize(v);
+		float dt =glm::dot(nv, n);
 		float discrimian = 1.0f - eta * eta*(1.0f - dt * dt);
 		if (discrimian>0)
 		{
-			refracted = eta * (glm::normalize(v) - n * dt) - n * glm::sqrt(discrimian);
+			refracted = eta * (nv - n * dt) - n * glm::sqrt(discrimian);
 			return true;
 		}
 		else {
@@ -104,7 +107,7 @@ protected:
 		}
 	}
 
-	float schilck(float cosine, float eta) {
+	float schlick(float cosine, float eta) {
 		float r0 = (1.0f - eta) / (1.0f + eta);
 		r0 *= r0;
 		return r0 + (1.0f - r0)*glm::pow((1.0f - cosine), 5.0f);
